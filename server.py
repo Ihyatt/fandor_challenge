@@ -48,9 +48,23 @@ def search_page():
 
 	return render_template("search.html")
 
-@app.route('/movies')
+@app.route('/movies_search',methods=['GET'])
 def return_search():
-	pass
+	query = {}
+	search_list = []
+	search = request.args.get("search_item")
+	splitted_search = search.split(" ")
+
+	for word in splitted_search:
+		search_match = Movie.query.filter(Movie.title.like('%' + word + '%') ).all() 
+		search_list.extend(search_match)
+	
+	for match in search_list:
+		query[match.movie_id] = [match.title, match.description, match.year]
+
+	print query
+
+	return jsonify(query)
 
 
 

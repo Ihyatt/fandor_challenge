@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class = "row" id = "search-box">
+			<div class="col-md-6 col-md-offset-2">
+<h3>Fandor Search</h3>
+ <input type = "text" name ="search" id="search" class="form-control" placeholder="What film are you looking for...">
+ <button class = "search-movies" type="button">Search</button>
+</div>
+</div>
+
+
+<div class = "row">
+<div class="col-md-11" >
+	<ul id="movies">
+
+		
+	</ul>
+</div>
+</div>
+
+
+ <script>
+function showResults(results){
+	 
+	var returnedMovies = results;
+	
+	for (var key in returnedMovies){
+		
+		$("#movies").append(returnedMovies[key][0] + "<br>" + returnedMovies[key][1] + "<br>" + returnedMovies[key][2] + "<br>") 		
+	};
+	$("#search").val("")
+console.log("im here");
+}
+function getMatch() {
+	var searchItem = $("#search").val();
+	var search = {
+		"search_item": searchItem
+	};
+	console.log(search)
+	$.get('/movies_search', search, showResults);
+	console.log("found a match");
+	$("#movies").html("")
+}
+$(".search-movies").click(getMatch)
+</script>
+
+
+{% endblock %}
