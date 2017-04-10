@@ -15,11 +15,42 @@ app.secret_key = "ABC"
 app.jinja_env.undefined = StrictUndefined
 
 @app.route('/')
+def main_page():
+    """Main page where movies will be displayed"""
+    movies = Movie.query.all()
 
-def localhost():
-    """Homepage."""
+    return render_template("home.html", movies=movies)
 
-    return render_template("home.html")
+@app.route("/add-vote.json", methods=['POST']) 
+def rate_movie():
+	"""Rate movie"""
+
+	voted_item = request.form.get("voted_item")
+	movie_id = request.form.get("movie_id")
+
+	movie = Movie.query.get(int(movie_id))
+	vote_added = None
+	if voted_item == "up":
+		vote_added = Ratings(movie_id=int(movie_id), up_vote=True, down_vote=False)
+	else:
+		vote_added = Ratings(movie_id=int(movie_id), up_vote=False, down_vote=True)
+
+	db.session.add(vote_added)
+	db.session.commit()
+
+	result = {'vote': movie.rating_count(), "movie_id": movie_id}
+	return jsonify(result)
+
+
+@app.route('/search')
+def search_page():
+	"""Search page where user queries for specific movies"""
+
+	return render_template("search.html")
+
+@app.route('/movies')
+def return_search():
+	pass
 
 
 

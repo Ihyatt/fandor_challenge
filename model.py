@@ -24,14 +24,30 @@ class Movie(db.Model):
 	year = db.Column(db.Integer, nullable=True)
 	related_film_ids = db.Column(db.String(100),nullable=True)
 
+	def rating_count(self):
+		count = 0 
+		like_count = 0 
+		for rating in self.ratings:
+			count += 1
+		for like in self.ratings:
+			if like.up_vote == True:
+				like_count += 1
+		if count == 0:
+			return 0
+		vote = (float(like_count)/float(count)) * 100
+		return int(vote)
+
+
+
 class Ratings(db.Model):
 	__tablename__ = "ratings"
 
 	rating_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'), index=True)
-	score = db.Column(db.Integer, nullable=True)
+	up_vote = db.Column(db.Boolean, nullable=False)
+	down_vote = db.Column(db.Boolean, nullable=False)
 
-	movie = db.relationship("Movie", backref=db.backref("ratings", order_by=rating_id))
+	movie = db.relationship("Movie", backref=db.backref("ratings"))
 
 
 

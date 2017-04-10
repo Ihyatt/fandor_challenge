@@ -1,3 +1,49 @@
-A soft woman 
-is simply a wolf
-caught in meditation.
+
+{% extends 'base.html' %}
+{% block content %}
+
+	 {% for movie in movies %}
+		 <div>
+		 {{movie.title}}<br>
+		 {{movie.description}}<br>
+		 {{movie.year}}<br>
+	
+		 <button class="rate" data-direction="up" data-movie-id="{{movie.movie_id}}"> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+
+		<button class="rate" data-direction="down" data-movie-id="{{movie.movie_id}}"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
+
+		<span id="{{movie.movie_id}}"> {{movie.rating_count()}}%</span>
+
+		</div>
+		<br>
+
+	 {% endfor %}
+
+
+<script>
+ 
+function updateVote(results) {
+  var updated_vote = results["vote"];
+  $("#"+results['movie_id']).text(updated_vote).append("%");
+  console.log("Vote added")
+}
+function submitVote(evt) {
+  var voted_item = {
+    "voted_item": $(this).data("direction"),
+    "movie_id": $(this).data("movie-id")
+  }
+  console.log(voted_item)
+  $.post("/add-vote.json", voted_item, updateVote);
+    console.log("going to post request")
+}
+$(".rate").click(submitVote);
+
+
+</script>
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,36 @@
+li {
+	list-style-type: none;
+}
+
+body {
+  background-color: white;
+  background-image: url(/static/img/bracket-background.jpg);
+  background-repeat: repeat;
+  background-size: 80px 60px;
+  background-attachment: fixed;
+
+
+  color: #3e3f3a;
+}
+
+/*nav bar decoration*/
+.navbar-inverse {
+  background-color: #3E3F3A;
+  border-color: #3E3F3A;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+}
+.navbar-inverse .navbar-nav>li>a {
+  color:#98978b;
+}
+
+.navbar-inverse .navbar-brand {
+  color:#ffffff;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+  border-color: #3E3F3A
+}
