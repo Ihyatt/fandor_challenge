@@ -8,6 +8,8 @@ from model import Movie, Ratings, connect_to_db, db
 
 from flask import Flask, render_template, redirect, request, flash, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
+from operator import attrgetter
+import operator
 
 
 app = Flask(__name__)
@@ -18,8 +20,17 @@ app.jinja_env.undefined = StrictUndefined
 def main_page():
     """Main page where movies will be displayed"""
     movies = Movie.query.all()
+    popular = []
+    new_releases = sorted(movies, key=attrgetter('year'))
+    old_school = new_releases[::-1]
 
-    return render_template("home.html", movies=movies)
+    for movie in movies:
+    	popular.append([movie, movie.rating_count()])
+    popular = sorted(popular, key=operator.itemgetter(1))
+   
+
+
+    return render_template("home.html", movies=movies, popular=popular, new_releases=new_releases, old_school=old_school)
 
 @app.route("/add-vote.json", methods=['POST']) 
 def rate_movie():
@@ -56,13 +67,13 @@ def return_search():
 	splitted_search = search.split(" ")
 
 	for word in splitted_search:
-		search_match = Movie.query.filter(Movie.title.like('%' + word + '%') ).all() 
+		search_match = Movie.query.filter(Movie.title.like('%' + word + '%') ).all()
+		search_match = Movie.query.filter(Movie.description.like('%' + word + '%') ).all()  
+
 		search_list.extend(search_match)
 	
 	for match in search_list:
 		query[match.movie_id] = [match.title, match.description, match.year]
-
-	print query
 
 	return jsonify(query)
 

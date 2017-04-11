@@ -2,9 +2,51 @@
 {% extends 'base.html' %}
 {% block content %}
 
-	 {% for movie in movies %}
+<div>
+	Popular Movies
+	
+		{% for movie in popular %}
 		 <div>
-		 {{movie.title}}<br>
+		 	<div class='wrapper'>
+		 		<img src="/static/img/fandor_artwork1.jpg" class="img-responsive profile-pic" alt="Cinque Terre" width="300" style="display:inline-block;">
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'>
+
+	 {{movie[0].title}}<br>
+		 {{movie[0].description}}<br>
+		 {{movie[0].year}}<br>
+	
+		 <button class="rate" data-direction="up" data-movie-id="{{movie[0].movie_id}}"> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+
+		<button class="rate" data-direction="down" data-movie-id="{{movie[0].movie_id}}"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
+
+		<span class="{{movie[0].movie_id}}"> {{movie[0].rating_count()}}%</span>
+
+
+		</p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+		<br>
+		{% endfor %}
+		<br>
+</div>
+
+<div>
+	New Releases
+		{% for movie in new_releases %}
+		 <div>
+		 	<div class='wrapper'>
+		 		<img src="/static/img/fandor_artwork1.jpg" class="img-responsive profile-pic" alt="Cinque Terre" width="300" style="display:inline-block;">
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'>
+
+	 {{movie.title}}<br>
 		 {{movie.description}}<br>
 		 {{movie.year}}<br>
 	
@@ -12,19 +54,89 @@
 
 		<button class="rate" data-direction="down" data-movie-id="{{movie.movie_id}}"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
 
-		<span id="{{movie.movie_id}}"> {{movie.rating_count()}}%</span>
+		<span class="{{movie.movie_id}}"> {{movie.rating_count()}}%</span>
 
-		</div>
+
+		</p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+		<br>
+		{% endfor %}
+		<br>
+
+</div>
+	Old School Films
+		{% for movie in old_school %}
+		 <div>
+		 	<div class='wrapper'>
+		 		<img src="/static/img/fandor_artwork1.jpg" class="img-responsive profile-pic" alt="Cinque Terre" width="300" style="display:inline-block;">
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'>
+
+	 {{movie.title}}<br>
+		 {{movie.description}}<br>
+		 {{movie.year}}<br>
+	
+		 <button class="rate" data-direction="up" data-movie-id="{{movie.movie_id}}"> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+
+		<button class="rate" data-direction="down" data-movie-id="{{movie.movie_id}}"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
+
+		<span class="{{movie.movie_id}}"> {{movie.rating_count()}}%</span>
+
+
+		</p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
+		<br>
+		{% endfor %}
+		<br>
+
+
+
+
+	All Movies<br>
+	 {% for movie in movies %}
+		 <div>
+		 	<div class='wrapper'>
+		 		<img src="/static/img/fandor_artwork1.jpg" class="img-responsive profile-pic" alt="Cinque Terre" width="300" style="display:inline-block;">
+	<!-- description div -->
+	<div class='description'>
+		<!-- description content -->
+		<p class='description_content'>
+
+	 {{movie.title}}<br>
+		 {{movie.description}}<br>
+		 {{movie.year}}<br>
+	
+		 <button class="rate" data-direction="up" data-movie-id="{{movie.movie_id}}"> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span></button>
+
+		<button class="rate" data-direction="down" data-movie-id="{{movie.movie_id}}"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span></button>
+
+		<span class="{{movie.movie_id}}"> {{movie.rating_count()}}%</span>
+
+
+		</p>
+		<!-- end description content -->
+	</div>
+	<!-- end description div -->
+</div>
 		<br>
 
 	 {% endfor %}
+	 <br>
 
 
 <script>
  
 function updateVote(results) {
   var updated_vote = results["vote"];
-  $("#"+results['movie_id']).text(updated_vote).append("%");
+  $("."+results['movie_id']).text(updated_vote).append("%");
   console.log("Vote added")
 }
 function submitVote(evt) {

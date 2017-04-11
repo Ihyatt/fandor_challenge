@@ -17,7 +17,7 @@ def seed_movies():
 			description = group["description"]
 			url_slug = group["url_slug"]
 			year = group["year"]
-			related_film_ids = str(group["related_film_ids"])
+			related_film_ids = str(group["related_film_ids"])[1:-1]
 
 
 
