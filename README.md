@@ -1,5 +1,5 @@
 #Fandor Challenge
-This is a challenge created for Fandor, where I made a mock film rating and filtering website.
+#This is a challenge created for Fandor, where I made a mock film rating and filtering website.
 
 ##Contents
 * [Technologies Used](#technologiesused)
