@@ -54,8 +54,8 @@ Once typed in the search engine, movies are parsed by each word, and retruned in
   * `createdb fandor_challenge`
  * Create the tables in your database:
     * `python -i model.py`
-    *'seed database'
-    	*''python seed.py'
+    * `seed database`
+   	* `python seed.py`
  * Start up the flask server:
     * `python server.py`
  * Go to localhost:5000 to see the web app
