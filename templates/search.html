@@ -18,19 +18,50 @@
 	</ul>
 </div>
 </div>
+<ul id="list">
 
+</ul>
+<div class=controls></div><input id="current_page" type=hidden><input id=s"how_per_page" type=hidden>
 
  <script>
+
 function showResults(results){
 	 
 	var returnedMovies = results;
 	
 	for (var key in returnedMovies){
 		
-		$("#movies").append(returnedMovies[key][0] + "<br>" + returnedMovies[key][1] + "<br>" + returnedMovies[key][2] + "<br>") 		
+		$("#list").append("<li>" + returnedMovies[key][0] + "<br>" + returnedMovies[key][1] + "<br>" + returnedMovies[key][2] + "<br>" + "</li>") 		
 	};
+
+    var show_per_page = 5;
+    var number_of_items = $('#list').children('li').size();
+    console.log(number_of_items)
+    var number_of_pages = Math.ceil(number_of_items / show_per_page);
+    $('#current_page').val(0);
+    $('#show_per_page').val(show_per_page);
+
+    var navigation_html = '<a class="prev" onclick="previous()">Prev</a>';
+    var current_link = 0;
+    while (number_of_pages > current_link) {
+        navigation_html += '<a class="page" onclick="go_to_page(' + current_link + ')" longdesc="' + current_link + '">' + (current_link + 1) + '</a>';
+        current_link++;
+    }
+    navigation_html += '<a class="next" onclick="next()">Next</a>';
+
+    $('.controls').html(navigation_html);
+    $('.controls .page:first').addClass('active');
+
+    $('#list').children().css('display', 'none');
+    $('#list').children().slice(0, show_per_page).css('display', 'block');
+
+
 	$("#search").val("")
-console.log("im here");
+
+	
+
+
+
 }
 function getMatch() {
 	var searchItem = $("#search").val();
@@ -40,9 +71,54 @@ function getMatch() {
 	console.log(search)
 	$.get('/movies_search', search, showResults);
 	console.log("found a match");
-	$("#movies").html("")
+	$("#list").html("")
 }
+
+
+
+
+
+
+
+function go_to_page(page_num) {
+    var show_per_page = parseInt($('#show_per_page').val(), 0);
+
+    start_from = page_num * show_per_page;
+
+    end_on = start_from + show_per_page;
+
+    $('#list').children().css('display', 'none').slice(start_from, end_on).css('display', 'block');
+
+    $('.page[longdesc=' + page_num + ']').addClass('active').siblings('.active').removeClass('active');
+
+    $('#current_page').val(page_num);
+}
+
+
+
+function previous() {
+
+    new_page = parseInt($('#current_page').val(), 0) - 1;
+    //if there is an item before the current active link run the function
+    if ($('.active').prev('.page').length == true) {
+        go_to_page(new_page);
+    }
+
+}
+
+function next() {
+    new_page = parseInt($('#current_page').val(), 0) + 1;
+    //if there is an item after the current active link run the function
+    if ($('.active').next('.page').length == true) {
+        go_to_page(new_page);
+    }
+
+}
+
+
 $(".search-movies").click(getMatch)
+
+
 </script>
 
 
