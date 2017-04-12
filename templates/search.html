@@ -1,14 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- <div class = "row" id = "search-box"> -->
-<!-- 			<div class="col-md-6 col-md-offset-2">
-<h3>Fandor Search</h3>
- <input type = "text" name ="search" id="search" class="form-control" placeholder="Titles, peoples, genres">
- <button class = "search-movies" type="button">Search</button>
-</div> -->
-<!-- </div> -->
-
 <div class="row">
 <div class="col-md-6 col-md-offset-2">
 <h3>Fandor Search</h3>
@@ -71,8 +63,9 @@ function getMatch() {
 	var search = {
 		"search_item": searchItem
 	};
+    console.log(search)
 	
-	$.get('/movies_search', search, showResults);
+	$.get('/movies_search.json', search, showResults);
 	
 	$("#list").html("")
 }
