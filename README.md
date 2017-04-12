@@ -36,6 +36,7 @@ Movies are organized by the following:
 - Popularity
 - Year released
 - All films
+
 Users can up vote or down vote each film with data retrieved in real time using AJAX and JSON
 
 
