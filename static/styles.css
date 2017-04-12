@@ -25,16 +25,19 @@ li {
 }
 
 
-/*
+
 body {
   padding: 20px;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
   
-}*/
+}
+
+
 
 div.wrapper{
   float:left; /* important */
   position:relative; /* important(so we can absolutely position the description div */
+  margin: 5px;
 }
 div.description{
   position:absolute; /* absolute position (so we can position it where we want)*/
@@ -53,3 +56,19 @@ p.description_content{
   font-size: 10px;
 }
 
+
+
+
+
+
+.controls a{
+    padding:3px;
+    border:1px solid gray;
+    margin:2px;
+    color:black;
+    text-decoration:none
+}
+.active{
+    background:darkblue;
+    color:white !important;
+}

@@ -20,13 +20,14 @@ app.jinja_env.undefined = StrictUndefined
 def main_page():
     """Main page where movies will be displayed"""
     movies = Movie.query.all()
+    preview = len(movies) /2
     popular = []
-    new_releases = sorted(movies, key=attrgetter('year'))
-    old_school = new_releases[::-1]
+    new_releases = sorted(movies, key=attrgetter('year'))[::-1][:preview]
+    old_school = new_releases[::-1][:preview]
 
     for movie in movies:
     	popular.append([movie, movie.rating_count()])
-    popular = sorted(popular, key=operator.itemgetter(1))
+    popular = sorted(popular, key=operator.itemgetter(1))[::-1][:preview]
    
 
 
@@ -64,7 +65,7 @@ def return_search():
 	query = {}
 	search_list = []
 	search = request.args.get("search_item")
-	splitted_search = search.split(" ")
+	splitted_search = list(set(search.split(" ")))
 
 	for word in splitted_search:
 		search_match = Movie.query.filter(Movie.title.like('%' + word + '%') ).all()
