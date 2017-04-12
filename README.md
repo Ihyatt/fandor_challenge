@@ -1,5 +1,6 @@
 #Fandor Challenge
-#This is a challenge created for Fandor, where I made a mock film rating and filtering website.
+
+##This is a challenge created for Fandor, where I made a mock film rating and filtering website.
 
 ##Contents
 * [Technologies Used](#technologiesused)
@@ -32,9 +33,9 @@
 ![fandor_challenge](https://cloud.githubusercontent.com/assets/11432315/24941158/3f8056b2-1efd-11e7-8057-bc66df43589b.gif)
 
 Movies are organized by the following:
-*Popularity
-*Year released
-*All films
+- Popularity
+- Year released
+- All films
 Users can up vote or down vote each film with data retrieved in real time using AJAX and JSON
 
 
