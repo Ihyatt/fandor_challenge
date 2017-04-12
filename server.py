@@ -60,12 +60,12 @@ def search_page():
 
 	return render_template("search.html")
 
-@app.route('/movies_search',methods=['GET'])
+@app.route('/movies_search.json',methods=['GET'])
 def return_search():
 	query = {}
 	search_list = []
 	search = request.args.get("search_item")
-	splitted_search = list(set(search.split(" ")))
+	splitted_search = search.split(" ")
 
 	for word in splitted_search:
 		search_match = Movie.query.filter(Movie.title.like('%' + word + '%') ).all()

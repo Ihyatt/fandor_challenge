@@ -139,16 +139,13 @@
 function updateVote(results) {
   var updated_vote = results["vote"];
   $("."+results['movie_id']).text(updated_vote).append("%");
-  console.log("Vote added")
 }
 function submitVote(evt) {
-  var voted_item = {
+  var voted = {
     "voted_item": $(this).data("direction"),
     "movie_id": $(this).data("movie-id")
   }
-  console.log(voted_item)
-  $.post("/add-vote.json", voted_item, updateVote);
-    console.log("going to post request")
+  $.post("/add-vote.json", voted, updateVote);
 }
 $(".rate").click(submitVote);
 </script>
