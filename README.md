@@ -37,13 +37,13 @@ Movies are organized by the following:
 - Year released
 - All films
 
-Users can up vote or down vote each film with data retrieved in real time using AJAX and JSON
+Users can up vote or down vote each film with data retrieved in real time using AJAX and JSON.
 
 
 ####<a name="search"></a>Movie Search Page
 ![fandor_challenge2](https://cloud.githubusercontent.com/assets/11432315/24941183/692066ec-1efd-11e7-9a48-21b3e8c9d3fc.gif)
 
-Once typed in the search engine, movies are parsed by each word, and retruned in real time using AJAX and JSON. The results are paginated using Jquery. 
+Once typed in the search engine, movies are parsed by each word, and returned in real time using AJAX and JSON. The results are paginated using JQuery. 
 
 
 ####<a name="run"></a>How to Run Fandor_Challenge locally
@@ -56,7 +56,7 @@ Once typed in the search engine, movies are parsed by each word, and retruned in
   * `createdb fandor_challenge`
  * Create the tables in your database:
     * `python -i model.py`
-   * seed database
+   * Then seed database
    	* `python seed.py`
  * Start up the flask server:
     * `python server.py`
