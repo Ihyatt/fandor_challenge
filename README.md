@@ -7,7 +7,7 @@
 * [Features](#feautures)
 * [Main Page](#main)
 * [Movie Search Page](#search)
-* [How to locally run Fandor](#run)
+* [How to locally run the Fandor Challenge](#run)
 
 ### <a name="technologiesused"></a>Technologies Used
 
