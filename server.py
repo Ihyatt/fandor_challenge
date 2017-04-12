@@ -22,8 +22,9 @@ def main_page():
     movies = Movie.query.all()
     preview = len(movies) /2
     popular = []
-    new_releases = sorted(movies, key=attrgetter('year'))[::-1][:preview]
-    old_school = new_releases[::-1][:preview]
+    new_releases = sorted(movies, key=attrgetter('year'))
+    old_school = new_releases[:preview]
+    new_releases = new_releases[::-1][:preview]
 
     for movie in movies:
     	popular.append([movie, movie.rating_count()])

@@ -25,9 +25,9 @@
 
 ###<a name="features"></a>Features
 
-- [x] Movies filtered by popularity, year released, and all movies
-- [x] Movies can be searched by title, or description
-- [x] Movies are returned and divided by pagination
+- [x] Movies filtered by popularity, year released, and all movies.
+- [x] Movies can be searched by title, or description.
+- [x] Movies are returned and divided by pagination.
 
 ####<a name="main"></a>Main Movie Page
 ![fandor_challenge](https://cloud.githubusercontent.com/assets/11432315/24941158/3f8056b2-1efd-11e7-8057-bc66df43589b.gif)
