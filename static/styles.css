@@ -1,7 +1,7 @@
-/*li {
+li {
 	list-style-type: none;
 }
-*/
+
 /*nav bar decoration*/
 .navbar-inverse {
   background-color: #3E3F3A;
@@ -24,15 +24,13 @@
   border-color: #3E3F3A
 }
 
-
+/*movie decoration*/
 
 body {
   padding: 20px;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
   
 }
-
-
 
 div.wrapper{
   float:left; /* important */
@@ -57,6 +55,7 @@ p.description_content{
 }
 
 
+/*search page*/
 .search-movies{
   margin: 10px;
 }
