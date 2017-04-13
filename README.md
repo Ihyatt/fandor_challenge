@@ -47,7 +47,7 @@ Users can up vote or down vote each film with data retrieved in real time using 
 Once typed in the search engine, movies are parsed by each word, and returned in real time using AJAX and JSON. The results are paginated using JQuery. 
 
 
-#### <a name="run"></a>How to Run Fandor_Challenge locally
+#### <a name="run"></a>How to Run Fandor_Challenge Locally
 
 ##### General Setup
 * Set up and activate a python virtualenv, and install all dependencies:
