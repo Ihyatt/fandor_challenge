@@ -69,10 +69,12 @@ def return_search():
 	splitted_search = search.split(" ")
 
 	for word in splitted_search:
-		search_match = Movie.query.filter(Movie.title.like('%' + word + '%') ).all()
-		search_match = Movie.query.filter(Movie.description.like('%' + word + '%') ).all()  
+		search_match_title = Movie.query.filter(Movie.title.like('%' + word + '%') ).all()
+		search_match_description = Movie.query.filter(Movie.description.like('%' + word + '%') ).all()  
 
-		search_list.extend(search_match)
+		search_list.extend(search_match_title)
+		search_list.extend(search_match_description)
+
 	
 	for match in search_list:
 		query[match.movie_id] = [match.title, match.description, match.year]
