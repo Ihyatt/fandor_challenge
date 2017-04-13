@@ -1,6 +1,6 @@
 import unittest
 from unittest import TestCase
-from model import Movie, Ratings, example_data, connect_to_db, db
+from model import Movie, Ratings,connect_to_db, db
 from server import app
 
 
@@ -51,10 +51,6 @@ class TestFandorDatabase(unittest.TestCase):
 		# Connect to test database
 		connect_to_db(app)
 
-		# Create tables and add sample data
-		db.create_all()
-		example_data()
-
 
 	def tearDown(self):
 		"""Do at end of every test."""
@@ -62,11 +58,7 @@ class TestFandorDatabase(unittest.TestCase):
 		db.session.close()
 		db.drop_all()
 
-	def test_movies(self):
-		"""Test departments page."""
 
-		result = self.client.get("/")
-		self.assertIn("Lion King", result.data)
 
 
 

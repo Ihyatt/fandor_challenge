@@ -31,14 +31,7 @@ class Movie(db.Model):
 		vote = (float(like_count)/float(count)) * 100
 		return int(vote)
 
-def example_data():
-    movie = Movie(title="Lion King",
-                description="YAY Lions", 
-                url_slug="lion_king", 
-                year=1992,
-                related_film_ids="1")
-    db.session.add(movie)
-    db.session.commit()
+
 
 
 
