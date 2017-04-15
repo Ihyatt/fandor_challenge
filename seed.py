@@ -1,4 +1,4 @@
-"""Utility file to seed fandor_challenge database from  data in seed_data/"""
+"""Utility file to seed fandor_challenge database"""
 
 
 from sqlalchemy import func
