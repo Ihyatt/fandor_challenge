@@ -52,8 +52,7 @@ Once typed in the search engine, movies are parsed by each word, and returned in
 ##### General Setup
 * Set up and activate a python virtualenv, and install all dependencies:
     * `pip install -r requirements.txt`
-  * Make sure you have PostgreSQL running. Create a new database in psql named fandor_challenge:
-* `psql`
+ * Make sure you have PostgreSQL running. Create a new database named fandor_challenge:
   * `createdb fandor_challenge`
  * Create the tables in your database:
     * `python -i model.py`
