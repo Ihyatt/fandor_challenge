@@ -38,33 +38,6 @@ class FandorChallenge(unittest.TestCase):
 								follow_redirects=True)
 
 
-class TestFandorDatabase(unittest.TestCase):
-	def setUp(self):
-		"""Stuff to do before every test."""
-
-		# Get the Flask test client
-		self.client = app.test_client()
-
-		# Show Flask errors that happen during tests
-		app.config['TESTING'] = True
-
-		# Connect to test database
-		connect_to_db(app)
-
-
-	def tearDown(self):
-		"""Do at end of every test."""
-
-		db.session.close()
-		db.drop_all()
-
-
-
-
-
-	
-
-
 
 
 if __name__ == "__main__":
